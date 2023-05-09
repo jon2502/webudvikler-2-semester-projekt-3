@@ -1,0 +1,14 @@
+/*index*/
+
+/*login og registrering*/
+#profileimgprint{
+    display: grid;
+    grid-template-columns: repeat(5, 9svw);
+}
+.pics img{
+    border-radius: 50%;
+    width: 8svw;
+}
+/*spil side*/
+
+/*andet*/

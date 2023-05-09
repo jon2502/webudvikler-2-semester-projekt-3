@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const userSchema = mongoose.Schema({
+const Schema = mongoose.Schema({
     userPic:{
         type:String,
         required: true
@@ -8,4 +8,4 @@ const userSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('ProfilPics', userSchema);
+module.exports = mongoose.model('Profilepics', Schema, 'profilepics');
