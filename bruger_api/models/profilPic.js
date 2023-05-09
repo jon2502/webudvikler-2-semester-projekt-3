@@ -8,4 +8,4 @@ const userSchema = mongoose.Schema({
 
 })
 
-module.exports = mongoose.model('ProfilPic', userSchema);
+module.exports = mongoose.model('ProfilPics', userSchema);
