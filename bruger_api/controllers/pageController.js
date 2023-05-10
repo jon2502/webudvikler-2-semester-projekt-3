@@ -11,5 +11,16 @@ module.exports = {
             res.status(400).json(error.message);
             }
 
-}
+},
+    getspesificPic: async function (req,res, next) {
+        try{
+            let imgID = req.params.profilepics
+            console.log(imgID)
+            let imgurl = await APIprofilePics.find( { id: imgID } );
+            res.locals.profilepics = imgurl;
+            next();
+        } catch (error) {
+            res.status(400).json(error.message);
+        }
+    }
 }

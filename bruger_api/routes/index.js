@@ -30,5 +30,7 @@ router.post('/logout', async function(req, res, next) {
 router.get('/profilePics', con.getpics, function(req,res, next){
     res.json({ pics: res.locals.profilepics})
 })
-
+router.get('/profilePics/:profilepics', con.getspesificPic, function(req,res, next){
+  res.json({ imgurl: res.locals.profilepics})
+})
 module.exports = router;

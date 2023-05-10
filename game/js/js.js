@@ -1,6 +1,7 @@
 //html
 const profileimgprint = document.getElementById('profileimgprint')
 const registerSubmit = document.getElementById('registerSubmit')
+const imgklik = document.getElementsByClassName('imgklik')
 
 
 //index
@@ -14,11 +15,13 @@ const registerSubmit = document.getElementById('registerSubmit')
         console.log(objects)
         const pics = document.createElement('div')
         pics.classList.add('pics')
-        pics.innerHTML=`<img src=${objects.img}>`
+        pics.innerHTML=`<img class="imgklik" src=${objects.img}>`
         profileimgprint.appendChild(pics)
         }
     }
-
+    function selectimg(){
+        fetch
+    }
     
 //spil side
 

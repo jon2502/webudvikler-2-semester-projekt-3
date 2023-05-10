@@ -4,6 +4,10 @@ const Schema = mongoose.Schema({
     userPic:{
         type:String,
         required: true
+    },
+    id:{
+        type:Number,
+        required: true
     }
 
 })
