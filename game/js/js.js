@@ -2,6 +2,7 @@
 const profileimgprint = document.getElementById('profileimgprint')
 const registerSubmit = document.getElementById('registerSubmit')
 const profilepic = document.getElementById('profilepic')
+var selctedimg = true
 
 
 
@@ -26,12 +27,22 @@ const profilepic = document.getElementById('profilepic')
 
     function fetchimgData() {
         console.log(this.id)
+        console.log(this)
+        if(selctedimg == true) {
+            this.classList.add("selectedImg")
+            console.log(selctedimg)
+            selctedimg = false
+        } else {
+            console.log(selctedimg)
+            return
+        }
         fetch(`http://localhost:3000/profilePics/${this.id}`)
             .then(res=> res.json())
             .then((data) => printimginfo(data))
 
         function printimginfo(data){
             console.log(data.imgurl[0].img)
+            
             }
     }
     })

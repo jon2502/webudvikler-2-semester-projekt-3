@@ -9,6 +9,9 @@
     border-radius: 50%;
     width: 8svw;
 }
+.selectedImg{
+    border: 0.2svw solid #df0707;
+}
 /*spil side*/
 
 /*andet*/
