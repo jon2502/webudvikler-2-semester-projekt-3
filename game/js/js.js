@@ -1,7 +1,9 @@
 //html
 const profileimgprint = document.getElementById('profileimgprint')
 const registerSubmit = document.getElementById('registerSubmit')
-const imgklik = document.getElementsByClassName('imgklik')
+const profilepic = document.getElementById('profilepic')
+
+
 
 
 //index
@@ -12,16 +14,36 @@ const imgklik = document.getElementsByClassName('imgklik')
     function showProfilPics(data){
         console.log(data)
         for(let objects of data.pics){
-        console.log(objects)
         const pics = document.createElement('div')
         pics.classList.add('pics')
-        pics.innerHTML=`<img class="imgklik" src=${objects.img}>`
+        pics.innerHTML=`<img class="imgklik" id=${objects.id} src=${objects.img}>`
         profileimgprint.appendChild(pics)
         }
+        let imgklik = document.querySelectorAll('.imgklik')
+        console.log(imgklik)
+        imgklik.forEach(img =>{
+            img.addEventListener("click",fetchimgData)
+
+    function fetchimgData() {
+        console.log(this.id)
+        fetch(`http://localhost:3000/profilePics/${this.id}`)
+            .then(res=> res.json())
+            .then((data) => printimginfo(data))
+
+        function printimginfo(data){
+            console.log(data.imgurl[0].img)
+            }
     }
-    function selectimg(){
-        fetch
-    }
+    })
+}
+    
+
+    
+
+
+
+
+    
     
 //spil side
 
