@@ -15,7 +15,6 @@ module.exports = {
     getspesificPic: async function (req,res, next) {
         try{
             let imgID = req.params.profilepics
-            console.log(imgID)
             let imgurl = await APIprofilePics.find( { id: imgID } );
             res.locals.profilepics = imgurl;
             next();

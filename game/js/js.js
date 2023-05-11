@@ -28,7 +28,6 @@ var selctedimg = true
             this.classList.add("selectedImg")
             selctedimg = false
         } else {
-            console.log(imgklik)
             imgklik.forEach(img =>{
                 img.className="imgklik"})
             this.classList.add("selectedImg")
@@ -44,6 +43,11 @@ var selctedimg = true
                 profilepic.setAttribute('value',``)
                 profilepic.setAttribute('value',`${data.imgurl[0].img}`)
             }
+            }
+            registerSubmit.addEventListener('click',submitUser())
+
+            function submitUser() {
+                fetch()
             }
     }
     })

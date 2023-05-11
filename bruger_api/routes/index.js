@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const User = require('../models/user')
 
 
 con = require('../controllers/pageController');
@@ -8,15 +9,16 @@ con = require('../controllers/pageController');
 router.post('/login', async function(req, res, next) {
 
 });
-router.post('/register', async function(req, res, next) {
+router.post('/register', function(req, res, next) {
   try{
-    const user = new user({
+    const user = new User({
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
-      userPic: req.body.userPic
+      userpic: req.body.userpic
     })
-    await APIUser.create(user);
+    console.log(user)
+    User.create(user);
   } catch (err){
     res.status(400).json(err.message)
   }
