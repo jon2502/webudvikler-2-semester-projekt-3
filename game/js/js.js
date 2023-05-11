@@ -13,7 +13,6 @@ var selctedimg = true
 
 //register
     function showProfilPics(data){
-        console.log(data)
         for(let objects of data.pics){
         const pics = document.createElement('div')
         pics.classList.add('pics')
@@ -21,28 +20,30 @@ var selctedimg = true
         profileimgprint.appendChild(pics)
         }
         let imgklik = document.querySelectorAll('.imgklik')
-        console.log(imgklik)
         imgklik.forEach(img =>{
             img.addEventListener("click",fetchimgData)
 
     function fetchimgData() {
-        console.log(this.id)
-        console.log(this)
         if(selctedimg == true) {
             this.classList.add("selectedImg")
-            console.log(selctedimg)
             selctedimg = false
         } else {
-            console.log(selctedimg)
-            return
+            console.log(imgklik)
+            imgklik.forEach(img =>{
+                img.className="imgklik"})
+            this.classList.add("selectedImg")
         }
         fetch(`http://localhost:3000/profilePics/${this.id}`)
             .then(res=> res.json())
             .then((data) => printimginfo(data))
 
         function printimginfo(data){
-            console.log(data.imgurl[0].img)
-            
+            if(profilepic.value.length == 0){
+                profilepic.setAttribute('value',`${data.imgurl[0].img}`)
+            }else{
+                profilepic.setAttribute('value',``)
+                profilepic.setAttribute('value',`${data.imgurl[0].img}`)
+            }
             }
     }
     })
