@@ -37,18 +37,23 @@ var selctedimg = true
             .then((data) => printimginfo(data))
 
         function printimginfo(data){
-            if(profilepic.value.length == 0){
-                profilepic.setAttribute('value',`${data.imgurl[0].img}`)
+            if(userpic.value.length == 0){
+                userpic.setAttribute('value',`${data.imgurl[0].img}`)
             }else{
-                profilepic.setAttribute('value',``)
-                profilepic.setAttribute('value',`${data.imgurl[0].img}`)
+                userpic.setAttribute('value',``)
+                userpic.setAttribute('value',`${data.imgurl[0].img}`)
             }
             }
-            //registerSubmit.addEventListener('click',submitUser())
     }
     })
 }
-    function submitUser() {}
+
+registerSubmit.addEventListener('click',redirect())
+
+async function redirect(event){
+    event.prevenDeafult()
+    window.location.href = '../gameselcect.html'
+}
     
 
     

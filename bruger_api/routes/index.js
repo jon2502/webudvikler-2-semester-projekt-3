@@ -7,7 +7,7 @@ con = require('../controllers/pageController');
 
 /* GET home page. */
 router.post('/login', async function(req, res, next) {
-
+  res.redirect('http://localhost:5500/game/gameselcect.html')
 });
 router.post('/register', function(req, res, next) {
   try{
@@ -18,7 +18,8 @@ router.post('/register', function(req, res, next) {
       userpic: req.body.userpic
     })
     console.log(user)
-    User.create(user);
+    User.create(user)
+    res.redirect('http://localhost:5500/game/login.html')
   } catch (err){
     res.status(400).json(err.message)
   }
