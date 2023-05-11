@@ -44,14 +44,11 @@ var selctedimg = true
                 profilepic.setAttribute('value',`${data.imgurl[0].img}`)
             }
             }
-            registerSubmit.addEventListener('click',submitUser())
-
-            function submitUser() {
-                fetch()
-            }
+            //registerSubmit.addEventListener('click',submitUser())
     }
     })
 }
+    function submitUser() {}
     
 
     
@@ -70,4 +67,6 @@ switch (window.location.pathname){
             .then((res)=> res.json())
             .then((data) => showProfilPics(data))
         break;
+    case "/game/gameselcect.html":
+        fetch
 }
