@@ -1,11 +1,10 @@
 //html
 const profileimgprint = document.getElementById('profileimgprint')
-const registerSubmit = document.getElementById('registerSubmit')
-const profilepic = document.getElementById('profilepic')
+const userpic = document.getElementById('userpic')
 var selctedimg = true
+const logout = document.getElementById('logout')
 
-
-
+// authetication
 
 //index
 
@@ -48,22 +47,18 @@ var selctedimg = true
     })
 }
 
-registerSubmit.addEventListener('click',redirect())
-
-async function redirect(event){
-    event.prevenDeafult()
-    window.location.href = '../gameselcect.html'
-}
-    
-
-    
-
-
-
-
-    
-    
 //spil side
+logout.addEventListener('click',logoutfunction)
+async function logoutfunction() {
+    fetch('http://localhost:3000/logout')
+    .then(res => {
+        console.log(res.url);
+        window.location.replace(`${res.url}`)
+      }).catch(err => {
+        console.log('Error -', err);
+      });
+}
+
 
 //andet
 switch (window.location.pathname){
@@ -73,5 +68,22 @@ switch (window.location.pathname){
             .then((data) => showProfilPics(data))
         break;
     case "/game/gameselcect.html":
-        fetch
+        fetch('http://localhost:3000/authentication')
+    .then(res => {
+        console.log(res);
+        /*if (res.token == ""){
+            window.location.replace(`${res.url}`)
+        }*/
+      }).catch(err => {
+        console.log('Error -', err);
+      });
+        break;
+    case "/game/gameselcect.html":
+        fetch('http://localhost:3000/userinfo')
+        .then((res)=> res.json())
+        .then((data) => printprofile(data))
+        break;
+    default:
+        break;
 }
+
