@@ -1,12 +1,13 @@
 var express = require('express');
-var router = express.Router();
+var router = express.Router({ mergeParams: true });
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken')
+const cookieJwtAuth = require('../middleware/authMiddleware.js')
 
 
 con = require('../controllers/pageController');
 
-/* GET home page. */
 router.post('/login', async function(req, res, next) {
   let findUser = {
     username: req.body.username,
@@ -16,15 +17,21 @@ router.post('/login', async function(req, res, next) {
   if(compare !== null){
     const validate = await bcrypt.compare(findUser.password, compare.password)
     if (validate){
-      res.redirect('http://localhost:5500/game/gameselcect.html')
+      const user = {
+        username: compare.username
+    }
+    const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" })
+    res.cookie("token", token, {
+        httpOnly: true
+    })
+      res.redirect('http://localhost:3000/authentication')
     } else {
-      res.render('http://localhost:5500/game/login.html', {user:findUser, errorMessage:"wrong password or username"})
+
+      res.redirect('http://localhost:5500/game/login.html')
     }
   }
-
-
-  
 });
+
 router.post('/register', function(req, res, next) {
   try{
     const user = new User({
@@ -33,26 +40,45 @@ router.post('/register', function(req, res, next) {
       email: req.body.email,
       userpic: req.body.userpic
     })
-    console.log(user)
     User.create(user)
-    res.redirect('http://localhost:5500/game/login.html')
+    res.redirect('http://localhost:5500/game/gameselcect.html')
   } catch (err){
     res.status(400).json(err.message)
   }
 });
-router.get('/authentication', async function(req, res, next) {
-  res.redirect("http://localhost:5500/game/index.html")
+router.get('/authentication', cookieJwtAuth, async function(req, res, next) {
+  const foundUser = await User.findOne({username: req.user.username})
+  console.log(foundUser)
+  if(!foundUser){
+    res.sendStatus(403)
+    res.redirect('http://localhost:5500/game/login.html')
+    next()
+} else {
+  res.redirect('http://localhost:5500/game/gameselcect.html')
+}
 });
+
 router.get('/logout', async function(req, res, next) {
   res.clearCookie("token");
   res.redirect("http://localhost:5500/game/index.html")
 });
+
 router.get('/profilePics', con.getpics, function(req,res, next){
     res.json({ pics: res.locals.profilepics})
 })
+
 router.get('/profilePics/:profilepics', con.getspesificPic, function(req,res, next){
   res.json({ imgurl: res.locals.profilepics})
 })
-router.get('/userinfo/:userinfo',  function(req,res,next){
+
+router.get('/userinfo', cookieJwtAuth, async function(req,res,next){
+  const foundUser = await User.find({username: req.user.username})
+  if(foundUser){
+    res.json({ foundUser: res.locals.users})
+  }
+  else{
+    console.log('error')
+  }
 })
+
 module.exports = router;

@@ -12,6 +12,7 @@ const logout = document.getElementById('logout')
 
 //register
     function showProfilPics(data){
+        console.log(data)
         for(let objects of data.pics){
         const pics = document.createElement('div')
         pics.classList.add('pics')
@@ -48,17 +49,16 @@ const logout = document.getElementById('logout')
 }
 
 //spil side
-logout.addEventListener('click',logoutfunction)
-async function logoutfunction() {
-    fetch('http://localhost:3000/logout')
-    .then(res => {
-        console.log(res.url);
-        window.location.replace(`${res.url}`)
-      }).catch(err => {
-        console.log('Error -', err);
-      });
+
+function printprofile(data){
+    console.log(data)
 }
 
+
+
+async function logoutfunction() {
+    window.location.replace('http://localhost:3000/logout')
+}
 
 //andet
 switch (window.location.pathname){
@@ -68,20 +68,18 @@ switch (window.location.pathname){
             .then((data) => showProfilPics(data))
         break;
     case "/game/gameselcect.html":
-        fetch('http://localhost:3000/authentication')
-    .then(res => {
-        console.log(res);
-        /*if (res.token == ""){
-            window.location.replace(`${res.url}`)
-        }*/
-      }).catch(err => {
-        console.log('Error -', err);
-      });
-        break;
-    case "/game/gameselcect.html":
-        fetch('http://localhost:3000/userinfo')
-        .then((res)=> res.json())
-        .then((data) => printprofile(data))
+        if(document.cookie !== ""){
+            window.location.replace('http://localhost:3000/authentication')
+        } else{
+            fetch(`http://localhost:3000/userinfo`)
+                .then((res)=> res.json())
+                .then((data) => printprofile(data))
+
+            logout.addEventListener('click',logoutfunction)
+        }
+
+
+
         break;
     default:
         break;

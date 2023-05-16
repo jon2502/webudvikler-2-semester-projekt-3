@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
+
 var APIprofilePics = require('../models/profilePic.js')
-var User = require('../models/user.js')
+const User = require('../models/user')
+
+
 
 module.exports = {
     getpics: async function (req, res, next) {
@@ -22,6 +25,5 @@ module.exports = {
         } catch (error) {
             res.status(400).json(error.message);
         }
-}
-
+},
 }
