@@ -68,7 +68,8 @@ switch (window.location.pathname){
             .then((data) => showProfilPics(data))
         break;
     case "/game/gameselcect.html":
-        if(document.cookie !== ""){
+        if(document.cookie == ""){
+            console.log('fail')
             window.location.replace('http://localhost:3000/authentication')
         } else{
             fetch(`http://localhost:3000/userinfo`)
@@ -77,9 +78,6 @@ switch (window.location.pathname){
 
             logout.addEventListener('click',logoutfunction)
         }
-
-
-
         break;
     default:
         break;

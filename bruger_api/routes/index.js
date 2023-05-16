@@ -4,6 +4,7 @@ const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieJwtAuth = require('../middleware/authMiddleware.js')
+const checkUser = require('../middleware/authMiddleware.js')
 
 
 con = require('../controllers/pageController');
@@ -21,9 +22,7 @@ router.post('/login', async function(req, res, next) {
         username: compare.username
     }
     const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1h" })
-    res.cookie("token", token, {
-        httpOnly: true
-    })
+    res.cookie("token", token,)
       res.redirect('http://localhost:3000/authentication')
     } else {
 
@@ -71,14 +70,13 @@ router.get('/profilePics/:profilepics', con.getspesificPic, function(req,res, ne
   res.json({ imgurl: res.locals.profilepics})
 })
 
-router.get('/userinfo', cookieJwtAuth, async function(req,res,next){
-  const foundUser = await User.find({username: req.user.username})
-  if(foundUser){
-    res.json({ foundUser: res.locals.users})
-  }
-  else{
-    console.log('error')
-  }
+router.get('/userinfo', checkUser, async function(req,res,next){
+  const foundUser = await User.findOne({username: req.user.username})
+  console.log(foundUser)
+  if(!foundUser){
+} else {
+  res.json({ foundUser: res.locals.user})
+}
 })
 
 module.exports = router;
