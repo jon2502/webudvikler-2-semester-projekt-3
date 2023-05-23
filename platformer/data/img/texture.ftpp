@@ -2,10 +2,10 @@
   "meta": {
     "version": "0.6.7"
   },
-  "savePath": "C:\\Users\\JonBj\\Desktop\\platformer\\data\\img",
+  "savePath": "C:\\Users\\JonBj\\OneDrive\\Dokumenter\\IBA\\Professionsbachelor i Webudvikling\\2 semester\\projekt 3\\kode\\webudvikler-2-semester-projekt-3\\platformer\\data\\img",
   "images": [],
   "folders": [
-    "C:/Users/JonBj/OneDrive/Dokumenter/IBA/Professionsbachelor i Webudvikling/2 semester/projekt 3/kode/webudvikler-2-semester-projekt-3/spil filer/platformer/data/img/assets"
+    "C:/Users/JonBj/OneDrive/Dokumenter/IBA/Professionsbachelor i Webudvikling/2 semester/projekt 3/kode/webudvikler-2-semester-projekt-3/platformer/data/img/assets"
   ],
   "packOptions": {
     "textureName": "texture",
@@ -19,7 +19,7 @@
     "filter": "none",
     "exporter": "JSON (array)",
     "fileName": "pack-result",
-    "savePath": "C:\\Users\\JonBj\\Desktop\\platformer\\data\\img",
+    "savePath": "C:\\Users\\JonBj\\OneDrive\\Dokumenter\\IBA\\Professionsbachelor i Webudvikling\\2 semester\\projekt 3\\kode\\webudvikler-2-semester-projekt-3\\platformer\\data\\img",
     "width": 2048,
     "height": 2048,
     "fixedSize": false,

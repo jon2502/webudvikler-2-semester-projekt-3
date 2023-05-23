@@ -10,12 +10,11 @@ class PlayScreen extends me.Stage {
      */
     onResetEvent() {
       // load a level
-        console.log('test1')
         me.level.load("map1");
-        
+        console.log(me.collision.types)
         // reset the score
         game.data.score = 0;
-        console.log('test2')
+        console.log
         // add our HUD to the game world
         if (typeof this.HUD === "undefined") {
             this.HUD = new UIContainer();

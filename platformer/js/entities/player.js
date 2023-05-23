@@ -57,33 +57,33 @@ class PlayerEntity extends me.Entity {
 
         // set a renderable
         this.renderable = game.texture.createAnimationFromName([
-            "idel 1.png", "idel 2.png", "idel 3.png",
-            "idel 4.png", "idel 5.png", "idel 6.png",
+            "idle 1.png", "idle 2.png", "idle 3.png",
+            "idle 4.png", "idle 5.png", "idle 6.png",
 
-            "walking 1.png", "walking 2.png", "walking 3.png",
-            "walking 4.png", "walking 5.png", "walking 6.png",
-            "walking 7.png", "walking 8.png", "walking 9.png",
+            "walk 1.png", "walk 2.png", "walk 3.png",
+            "walk 4.png", "walk 5.png", "walk 6.png",
+            "walk 7.png", "walk 8.png", "walk 9.png",
 
             "jump 1.png", "jump 2.png", "jump 3.png",
             "jump 4.png", "jump 5.png", "jump 6.png",
             "jump 7.png", "jump 8.png", "jump 9.png",
 
-            "attack standing 1.png", "attack standing 2.png", "attack standing 3.png"
+            "attack 1.png", "attack 2.png", "attack 3.png"
         ]);
 
         // define a basic walking animatin
-        this.renderable.addAnimation('stand', [{ name: "idel 1.png", delay: 50}, { name: "idel 2.png", delay: 50 }, { name: "idel 3.png", delay: 50 }, 
-        { name: "idel 4.png", delay: 50 }, { name: "idel 5.png", delay: 50 }, { name: "idel 6.png", delay: 50 }]);
-        this.renderable.addAnimation('walk',  [{ name: "walking 1.png", delay: 50 }, { name: "walking 2.png", delay: 50 }, { name: "walking 3.png", delay: 50 }, 
-        { name: "walking 4.png", delay: 50 }, { name: "walking 5.png", delay: 50 }, { name: "walking 6.png", delay: 50 }, 
-        { name: "walking 7.png", delay: 50 }, { name: "walking 8.png", delay: 50 }, { name: "walking 9.png", delay: 50 }]);
+        this.renderable.addAnimation('stand', [{ name: "idl1 1.png", delay: 50}, { name: "idle 2.png", delay: 50 }, { name: "idle 3.png", delay: 50 }, 
+        { name: "idle 4.png", delay: 50 }, { name: "idle 5.png", delay: 50 }, { name: "idle 6.png", delay: 50 }]);
+        this.renderable.addAnimation('walk',  [{ name: "walk 1.png", delay: 50 }, { name: "walk 2.png", delay: 50 }, { name: "walk 3.png", delay: 50 }, 
+        { name: "walk 4.png", delay: 50 }, { name: "walk 5.png", delay: 50 }, { name: "walk 6.png", delay: 50 }, 
+        { name: "walk 7.png", delay: 50 }, { name: "walk 8.png", delay: 50 }, { name: "walk 9.png", delay: 50 }]);
         this.renderable.addAnimation('jump',  [{ name: "jump 1.png", delay: 50 }, { name: "jump 2.png", delay: 50 }, { name: "jump 3.png", delay: 50 }, 
         { name: "jump 4.png", delay: 50 }, { name: "jump 5.png", delay: 50 }, {name: "jump 6.png", delay: 50}, 
         { name: "jump 7.png", delay: 50 }, { name: "jump 8.png", delay: 50 }, {name: "jump 9.png", delay: 50},]);
-        this.renderable.addAnimation('attack',[{name:"attack standing 1.png"}, {name:"attack standing 2.png"}, {name:"attack standing 3.png"}])
+        this.renderable.addAnimation('attack',[{name:"attack 1.png"}, {name:"attack 2.png"}, {name:"attack 3.png"}])
 
         // set as default
-        this.renderable.setCurrentAnimation("stand");
+        this.renderable.setCurrentAnimation("walk");
 
         // set the renderable position to bottom center
         this.anchorPoint.set(0.5, 0.5);
@@ -164,7 +164,9 @@ class PlayerEntity extends me.Entity {
     /**
      * colision handler
      */
+    
     onCollision(response, other) {
+        console.log(other.body.collisionType)
         switch (other.body.collisionType) {
             case me.collision.types.WORLD_SHAPE:
                 // Simulate a platform object
