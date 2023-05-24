@@ -10,7 +10,6 @@ class PathEnemyEntity extends me.Entity {
      * constructor
      */
     constructor(x, y, settings) {
-
         // save the area size defined in Tiled
         var width = settings.width || settings.framewidth;
 
@@ -185,7 +184,7 @@ export class SlimeEnemyEntity extends PathEnemyEntity {
         this.renderable.setCurrentAnimation("walk");
 
         // set the renderable position to bottom center
-        this.anchorPoint.set(0.5, 0.6);
+        this.anchorPoint.set(0.5, 0.4);
 
         // particle tint matching the sprite color
         this.particleTint = "#FF35B8";
