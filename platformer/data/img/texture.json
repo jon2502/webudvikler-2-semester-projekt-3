@@ -901,6 +901,31 @@
       }
     },
     {
+      "filename": "coin.png",
+      "frame": {
+        "x": 146,
+        "y": 221,
+        "w": 9,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 9,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 9,
+        "h": 10
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    {
       "filename": "walk 9.png",
       "frame": {
         "x": 174,

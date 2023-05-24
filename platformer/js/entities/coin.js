@@ -1,5 +1,5 @@
 import * as me from 'https://esm.run/melonjs@13';
-import game from './../game.js';
+import game from '../game.js';
 
 class CoinEntity extends me.Collectable {
     /**
@@ -11,9 +11,9 @@ class CoinEntity extends me.Collectable {
             Object.assign({
                 image: game.texture,
                 region : "coin.png",
-                shapes :[new me.Ellipse(35 / 2, 35 / 2, 35, 35)] // coins are 35x35
             })
         );
+
     }
 
     // add a onResetEvent to enable object recycling
@@ -27,7 +27,6 @@ class CoinEntity extends me.Collectable {
      * collision handling
      */
     onCollision(/*response*/) {
-
         // do something when collide
         me.audio.play("cling", false);
         // give some score

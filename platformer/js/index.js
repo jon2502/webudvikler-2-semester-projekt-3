@@ -50,6 +50,7 @@ export default function onload() {
         me.pool.register("SlimeEntity", SlimeEnemyEntity);
         me.pool.register("FlyEntity", FlyEnemyEntity);
         me.pool.register("CoinEntity", CoinEntity, true);
+        //me.pool.register("HoleEntity", HoleEntity)
 
         // load the texture atlas file
         // this will be used by renderable object later

@@ -130,9 +130,6 @@ class ScoreItem extends me.BitmapText {
             this.setText(this.score);
             this.isDirty = true;
         }
-        if (this.score > 100){
-            me.state.change(me.state.GAME_END);
-        }
         return super.update(dt);
     }
         
