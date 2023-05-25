@@ -93,16 +93,14 @@ class PlayerEntity extends me.Entity {
      ** update the force applied
      */
     update(dt) {
-       /* if (me.input.isKeyPressed("attack")){
+       if (me.input.isKeyPressed("attack")){
             if (this.body.vel.x === 0){
                 this.renderable.setCurrentAnimation("attack")
-                var bullet = new bulletEntity(this.pos.x, this.pos.y-12,{
-                    dir: { x: 1, y: 0, }
-                    });
-                bullet.add();
+                this.bullet = new bulletEntity()
+                me.game.world.addChild(this.bullet)
             }
     
-        }*/
+        }
         if (me.input.isKeyPressed("left")){
             if (this.body.vel.x === 0) {
                 this.renderable.setCurrentAnimation("walk");

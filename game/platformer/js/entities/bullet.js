@@ -4,7 +4,8 @@ import game from './../game.js';
 class bulletEntity extends me.Entity {
     constructor(x, y, settings) {
         // call the constructor
-        super(x, y , settings);
+
+        super(2, 5, 15, 10);
 
         // set to projectile object
         this.body.collisionType = me.collision.types.PROJECTILE_OBJECT;

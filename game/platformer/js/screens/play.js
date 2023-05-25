@@ -1,5 +1,4 @@
 import * as me from 'https://esm.run/melonjs@13';
-
 import game from '../game.js';
 
 class PlayScreen extends me.Stage {
